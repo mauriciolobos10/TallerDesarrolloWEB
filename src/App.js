@@ -2,13 +2,25 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component }  from 'react';
 import Home from './components/Home';
+import { useState } from 'react'
+import { Button } from '@mui/material';
 
 
 function App() {
+  const [count, setCount] = useState(2)
+
   return (
-    <Home>
+    <div>
+      <button onClick={() => setCount((count) => count * count)}>
+        count is {count}
+      </button>
+
+    </div>
+    
+    
+    //<Home>
       
-    </Home>
+    //</Home>
 
 
 
