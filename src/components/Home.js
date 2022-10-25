@@ -17,6 +17,9 @@ const Home = () => {
     const [count, setCount] = useState(1)
     const [listadoSelected, setListadoSelected] = useState([]);
 
+    const [objetoPrueba, setObjetoPrueba] = useState({pokemon: '', pokemonDos: ''}); 
+    const [buscador, setBuscador] = useState("");
+
 
     const arreglar = () =>{
         listado.sort((a,b) => {
@@ -52,6 +55,11 @@ const Home = () => {
     };
     const handleInputChange = (event)=> {
         setFinder(event.target.value);
+    }
+    const handleInputChangeDos = (event)=> {
+        const {name, value} = event.target;
+        setObjetoPrueba({...objetoPrueba,[name]: value});
+        
     }
     useEffect(() => {
         if (finder.trim() !== ""){
@@ -124,7 +132,7 @@ const Home = () => {
                         ))}
                     </Grid>
 
-                    <Grid item md={4}>
+                    {/* <Grid item md={4}>
                         
                         {finder && 
                         listadoAux.map((element, index) => (
@@ -146,7 +154,23 @@ const Home = () => {
                             funcion={stack2}
                             ></Poke>
                         ))}
+                    </Grid> */}
+
+                    <Grid item md={5}>
+                        <TextField
+                        sx={{mt:2}}
+                        fullWidth
+                        error= {errors}
+                        helperText={errors && "hay error"}
+                        label= "Pokemon"
+                        name="pokemon"
+                        type="text"
+                        variant="outlined"
+                        value={objetoPrueba.pokemon}
+                        onChange={handleInputChangeDos}
+                        ></TextField>
                     </Grid>
+
 
                 </Grid>
                 
